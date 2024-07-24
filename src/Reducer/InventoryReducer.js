@@ -1,0 +1,23 @@
+import { FETCH_ACTIONS } from "../actions";
+
+const initialState = {
+    items: [],
+    loading:false,
+    error:null,
+}
+
+const InventoryReducer = (state, dispatch) => {
+  switch (dispatch.type) {
+    case FETCH_ACTIONS.PROGRESS: {
+      return { ...state, loading: true };
+    }
+    case FETCH_ACTIONS.SUCCESS: {
+      return { ...state, loading: false, items: dispatch.data };
+    }
+    case FETCH_ACTIONS.ERROR: {
+      return { ...state, loading: false, error: dispatch.error };
+    }
+  }
+};
+
+export {InventoryReducer ,initialState};
